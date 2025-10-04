@@ -32,6 +32,7 @@ export function createMockGoogleAPIs(): GoogleAPIs {
         get: vi.fn(),
         insert: vi.fn(),
         update: vi.fn(),
+        patch: vi.fn(),
         delete: vi.fn(),
       },
       freebusy: {
