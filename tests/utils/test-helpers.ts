@@ -13,6 +13,7 @@ export function createMockGoogleAPIs(): GoogleAPIs {
         get: vi.fn(),
         create: vi.fn(),
         update: vi.fn(),
+        export: vi.fn(),
       },
       permissions: {
         create: vi.fn(),
