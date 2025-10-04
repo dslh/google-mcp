@@ -153,6 +153,12 @@ Environment Variables:
 }
 
 main().catch((error) => {
-  logger.error('Fatal error:', error);
+  if (error instanceof Error) {
+    logger.error('Fatal error:', { message: error.message, stack: error.stack });
+    console.error('\nError:', error.message);
+  } else {
+    logger.error('Fatal error:', error);
+    console.error('\nError:', error);
+  }
   process.exit(1);
 });
