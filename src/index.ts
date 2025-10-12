@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
-import 'dotenv/config';
+import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import {
@@ -12,6 +14,11 @@ import { createOAuthClient } from './auth/oauth-client.js';
 import { logger } from './utils/logger.js';
 import { handleError } from './utils/error-handler.js';
 import { tools, handleToolCall } from './tools/index.js';
+
+// Load .env file from project root (one level up from dist/)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+dotenv.config({ path: path.resolve(__dirname, '..', '.env') });
 
 class GoogleMCPServer {
   private server: Server;
